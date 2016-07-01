@@ -46,7 +46,7 @@ function displayWork(){
 $(document).click(function(loc){
 	var x = loc.pageX;
 	var y = loc.pageY;
-	locClicks(x, y);
+	logClicks(x, y);
 });
 
 var projects = {
