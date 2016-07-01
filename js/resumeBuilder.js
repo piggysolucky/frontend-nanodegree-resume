@@ -7,9 +7,13 @@ var userName = "Rui Yan";
 var userRole = "Software Engineer";
 var formattedName = HTMLheaderName.replace("%data%", userName);
 var formattedRole = HTMLheaderRole.replace("%data%", userRole);
+var myBioPic = HTMLbioPic.replace("%data%", "images/piggy.jpeg");
+
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-$("#header").append(internationalizeButton);
+$('#header').prepend(myBioPic);
+//internationalize button is so ugly
+//$("#header").append(internationalizeButton);
 /*Work Section*/
 var work = {
 	"jobs" : [
@@ -63,7 +67,8 @@ var projects = {
 	"projects": [{
 		"title": "Web Application: Perfect Gift",
 		"dates": "09/2015 -- 11/2015",
-		"description": "-Developing a web application that allows farmers, craftsmen or anyone to sell original product using this web application"
+		"description": "-Developing a web application that allows farmers, craftsmen or anyone to sell original product using this web application",
+		"images" : ["images/project1.JPG", "images/project2.JPG"]
 	}, {
 		"title": "Android Phone Application: Find Buddy",
 		"dates": "09/2015 --  11/2015",
@@ -89,6 +94,13 @@ projects.display = function(){
         
         var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
         $(".project-entry:last").append(formattedDescription);
+
+        if(project.images && project.images.length != 0){
+        	for(var imageId in project.images){
+        		var formattedImage = HTMLprojectImage.replace("%data%", project.images[imageId]);
+        		$(".project-entry:last").append(formattedImage);
+        	}
+        }
 	}
 }
 projects.display();
